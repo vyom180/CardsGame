@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Card {
+public class Card implements Comparable<Card>{
 	
 	private Suits suit;
 	private Denom denom;
@@ -29,6 +29,11 @@ public class Card {
 	public void setRandom() {
 		this.setSuit(Suits.values()[new Random().nextInt(Suits.values().length)]);
 		this.setDenom(Denom.values()[new Random().nextInt(Denom.values().length)]);
+	}
+
+	@Override
+	public int compareTo(Card c1) {
+		return this.denom.compareTo(c1.denom);
 	}
 	
 	

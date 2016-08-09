@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Hand {
 
@@ -25,6 +26,10 @@ public class Hand {
 	public PokerHand evaluatePoker() {
 		Poker p = new Poker();
 		return p.getTypeOfHand(this);
+	}
+	
+	public void sort() {
+		Collections.sort(cards);
 	}
 	
 }
