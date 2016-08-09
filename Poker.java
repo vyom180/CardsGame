@@ -45,11 +45,11 @@ public class Poker {
 	private boolean isStraightFlush(ArrayList<Card> cards) {
 		Suits suit = cards.get(0).getSuit();
 		Denom denom = cards.get(0).getDenom();
-		for(Card c : cards) {
-			if(c.getSuit()!=suit && c.getDenom().ordinal() - denom.ordinal() > 1) {
+		for(int i = 1 ; i < cards.size() ; i++ ) {
+			if(cards.get(i).getSuit()!=suit && cards.get(i).getDenom().ordinal() - denom.ordinal() != 1) {
 				return false;
 			}
-			denom = c.getDenom();
+			denom = cards.get(i).getDenom();
 		}
 		return true;
 	}
@@ -82,11 +82,11 @@ public class Poker {
 	
 	private boolean isStraight(ArrayList<Card> cards) {
 		Denom denom = cards.get(0).getDenom();
-		for(Card c : cards) {
-			if(c.getDenom().ordinal() - denom.ordinal() > 1) {
+		for(int i = 1 ; i < cards.size() ; i++ ) {
+			if(cards.get(i).getDenom().ordinal() - denom.ordinal() != 1) {
 				return false;
 			}
-			denom = c.getDenom();
+			denom = cards.get(i).getDenom();
 		}
 		return true;
 	}
