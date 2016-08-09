@@ -12,7 +12,13 @@ public class Poker {
 			return PokerHand.ROYAL_FLUSH;
 		if(isStraightFlush(cards))
 			return PokerHand.STRAIGHT_FLUSH;
-		if(isRoyalFlush(cards))
+		if(isFourOfAKind(cards))
+			return PokerHand.FOUR_OF_A_KIND;
+		if(isFlush(cards))
+			return PokerHand.FLUSH;
+		if(isStraight(cards))
+			return PokerHand.STRAIGHT;
+		/*if(isRoyalFlush(cards))
 			return PokerHand.ROYAL_FLUSH;
 		if(isRoyalFlush(cards))
 			return PokerHand.ROYAL_FLUSH;
@@ -21,14 +27,19 @@ public class Poker {
 		if(isRoyalFlush(cards))
 			return PokerHand.ROYAL_FLUSH;
 		if(isRoyalFlush(cards))
-			return PokerHand.ROYAL_FLUSH;
-		if(isRoyalFlush(cards))
-			return PokerHand.ROYAL_FLUSH;
-		if(isRoyalFlush(cards))
-			return PokerHand.ROYAL_FLUSH;
-		if(isRoyalFlush(cards))
-			return PokerHand.ROYAL_FLUSH;
+			return PokerHand.ROYAL_FLUSH;*/
 		return null;
+	}
+
+	private boolean isRoyalFlush(ArrayList<Card> cards) {
+		Suits suit = cards.get(0).getSuit();
+		if(cards.contains(new Card(suit,Denom.ACE)))
+			if(cards.contains(new Card(suit,Denom.KING)))
+				if(cards.contains(new Card(suit,Denom.QUEEN)))			
+					if(cards.contains(new Card(suit,Denom.JACK)))
+						if(cards.contains(new Card(suit,Denom.TEN)))
+							return true;
+		return false;
 	}
 
 	private boolean isStraightFlush(ArrayList<Card> cards) {
@@ -42,19 +53,8 @@ public class Poker {
 		}
 		return true;
 	}
-
-	private boolean isRoyalFlush(ArrayList<Card> cards) {
-		Suits suit = cards.get(0).getSuit();
-		if(cards.contains(new Card(suit,Denom.ACE)))
-			if(cards.contains(new Card(suit,Denom.KING)))
-				if(cards.contains(new Card(suit,Denom.QUEEN)))			
-					if(cards.contains(new Card(suit,Denom.JACK)))
-						if(cards.contains(new Card(suit,Denom.TEN)))
-							return true;
-		return false;
-	}
-			
-	private boolean fourOfAKind(ArrayList<Card> cards) {
+		
+	private boolean isFourOfAKind(ArrayList<Card> cards) {
 		int count = 0;
 		Denom denom = cards.get(0).getDenom();
 		if(denom.ordinal() != cards.get(1).getDenom().ordinal()) 
@@ -69,15 +69,30 @@ public class Poker {
 		}
 		return false;
 	}
+	
+	private boolean isFlush(ArrayList<Card> cards) {
+		Suits suit = cards.get(0).getSuit();
+		for(Card c : cards) {
+			if(c.getSuit()!=suit) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean isStraight(ArrayList<Card> cards) {
+		Denom denom = cards.get(0).getDenom();
+		for(Card c : cards) {
+			if(c.getDenom().ordinal() - denom.ordinal() > 1) {
+				return false;
+			}
+			denom = c.getDenom();
+		}
+		return true;
+	}
 	/*
 	private boolean fullHouse(ArrayList<Card> cards) {
-		if(cards.contains(new Card(Suits.HEARTS,Denom.ACE)))
-			if(cards.contains(new Card(Suits.SPADES,Denom.ACE)))
-				if(cards.contains(new Card(Suits.DIAMONDS,Denom.ACE)))
-					if(cards.contains(new Card(Suits.SPADES,Denom.KING)))
-						if(cards.contains(new Card(Suits.HEARTS,Denom.KING)))
-							return true;
-	return false;
+		
 	}
 	
 	private boolean flush(ArrayList<Card> cards) {
