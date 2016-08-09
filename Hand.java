@@ -23,7 +23,8 @@ public class Hand {
 	}
 	
 	public PokerHand evaluatePoker() {
-		
+		Poker p = new Poker();
+		return p.getTypeOfHand(this);
 	}
 	
 }
