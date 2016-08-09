@@ -4,7 +4,12 @@ import java.util.Collections;
 public class Hand {
 
 	private int n;
-	ArrayList<Card> cards;
+	private ArrayList<Card> cards;
+	
+	public Hand() {
+		n = 0;
+		cards = new ArrayList<Card>();
+	}
 	
 	public int getN() {
 		return n;
@@ -17,14 +22,21 @@ public class Hand {
 	public void setCards(ArrayList<Card> cards1) {
 		for(int i = 0; i < cards1.size(); i++)
 			this.cards.add(cards1.get(i));
+		n = cards.size();
 	}
 	
+	private void p(Object o) {
+		System.out.print(o);
+	}
+
 	public ArrayList<Card> getCards() {
 		return cards;
 	}
 	
 	public PokerHand evaluatePoker() {
+		
 		Poker p = new Poker();
+		sort();
 		return p.getTypeOfHand(this);
 	}
 	

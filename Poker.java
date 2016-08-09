@@ -4,19 +4,20 @@ public class Poker {
 
 	public PokerHand getTypeOfHand(Hand hand) {
 		
+		
 		if(hand.getN()!=5)
 			return PokerHand.NONE;
 		
 		ArrayList<Card> cards = hand.getCards();
 		if(isRoyalFlush(cards))
-			return PokerHand.ROYAL_FLUSH;
-		if(isStraightFlush(cards))
+			return PokerHand.ROYAL_FLUSH;	
+		else if(isStraightFlush(cards))
 			return PokerHand.STRAIGHT_FLUSH;
-		if(isFourOfAKind(cards))
+		else if(isFourOfAKind(cards))
 			return PokerHand.FOUR_OF_A_KIND;
-		if(isFlush(cards))
+		else if(isFlush(cards))
 			return PokerHand.FLUSH;
-		if(isStraight(cards))
+		else if(isStraight(cards))
 			return PokerHand.STRAIGHT;
 		/*if(isRoyalFlush(cards))
 			return PokerHand.ROYAL_FLUSH;
@@ -32,6 +33,7 @@ public class Poker {
 	}
 
 	private boolean isRoyalFlush(ArrayList<Card> cards) {
+		
 		Suits suit = cards.get(0).getSuit();
 		if(cards.contains(new Card(suit,Denom.ACE)))
 			if(cards.contains(new Card(suit,Denom.KING)))
@@ -40,6 +42,10 @@ public class Poker {
 						if(cards.contains(new Card(suit,Denom.TEN)))
 							return true;
 		return false;
+	}
+
+	private void p(Object o) {
+		System.out.print(o);
 	}
 
 	private boolean isStraightFlush(ArrayList<Card> cards) {

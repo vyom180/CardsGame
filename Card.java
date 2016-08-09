@@ -35,6 +35,11 @@ public class Card implements Comparable<Card>{
 	public int compareTo(Card c1) {
 		return this.denom.compareTo(c1.denom);
 	}
+	@Override
+	public boolean equals(Object c) {
+		return (suit == ((Card)c).suit) && (denom == ((Card)c).denom);
+		
+	}
 	
 	
 
