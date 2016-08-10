@@ -109,6 +109,21 @@ public class Tester {
 		hand.setCards(cards);
 		p(hand.evaluatePoker().toString()+"\n");
 		
+		p("\n");
+		createAndCheckRandomHand();
+	}
+
+	private static void createAndCheckRandomHand() {
+
+		p("Creating and Checking the Random Hand formed :\n");
+		p("------------------------------------------------\n");
+		
+		Hand hand = new Hand();
+		hand.setRandomPokerHand();
+		for(int i=0;i<hand.getN();i++)
+			p(hand.getCards().get(i).getDenom().name()+" OF "+hand.getCards().get(i).getSuit().name()+"\n");
+		p("\n");
+		p(hand.evaluatePoker().toString()+"\n");
 	}
 
 	private static void p(Object o) {

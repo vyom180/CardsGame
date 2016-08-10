@@ -6,29 +6,27 @@ public class Card implements Comparable<Card>{
 	private Denom denom;
 	
 	public Card(Suits suit,Denom denom) {
-		this.setSuit(suit);
-		this.setDenom(denom);
+		this.suit = suit;
+		this.denom = denom;
+	}
+	
+	public Card() {
+		
 	}
 	
 	public Suits getSuit() {
 		return suit;
 	}
 	
-	public void setSuit(Suits suit) {
-		this.suit = suit;
-	}
+	
 	
 	public Denom getDenom() {
 		return denom;
 	}
 	
-	public void setDenom(Denom denom) {
-		this.denom = denom;
-	}
-	
 	public void setRandom() {
-		this.setSuit(Suits.values()[new Random().nextInt(Suits.values().length)]);
-		this.setDenom(Denom.values()[new Random().nextInt(Denom.values().length)]);
+		this.suit = (Suits.values()[new Random().nextInt(Suits.values().length)]);
+		this.denom = (Denom.values()[new Random().nextInt(Denom.values().length)]);
 	}
 
 	@Override

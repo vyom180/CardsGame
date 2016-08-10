@@ -45,4 +45,15 @@ public class Hand {
 		Collections.sort(cards);
 	}
 	
+	public void setRandomPokerHand(){
+		
+		for(int i=0;i<5;i++) {
+			Card c = new Card();
+			c.setRandom();
+			cards.add(c);
+		}
+		n = cards.size();
+			
+	}
+	
 }
