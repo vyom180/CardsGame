@@ -3,11 +3,11 @@ import java.util.Random;
 public class Card implements Comparable<Card>{
 	
 	private Suits suit;
-	private Denom denom;
+	private Value value;
 	
-	public Card(Suits suit,Denom denom) {
+	public Card(Suits suit,Value value) {
 		this.suit = suit;
-		this.denom = denom;
+		this.value = value;
 	}
 	
 	public Card() {
@@ -20,22 +20,22 @@ public class Card implements Comparable<Card>{
 	
 	
 	
-	public Denom getDenom() {
-		return denom;
+	public Value getDenom() {
+		return value;
 	}
 	
 	public void setRandom() {
 		this.suit = (Suits.values()[new Random().nextInt(Suits.values().length)]);
-		this.denom = (Denom.values()[new Random().nextInt(Denom.values().length)]);
+		this.value = (Value.values()[new Random().nextInt(Value.values().length)]);
 	}
 
 	@Override
 	public int compareTo(Card c1) {
-		return this.denom.compareTo(c1.denom);
+		return this.value.compareTo(c1.value);
 	}
 	@Override
 	public boolean equals(Object c) {
-		return (suit == ((Card)c).suit) && (denom == ((Card)c).denom);
+		return (suit == ((Card)c).suit) && (value == ((Card)c).value);
 		
 	}
 	

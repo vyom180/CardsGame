@@ -3,6 +3,7 @@ import java.util.Collections;
 
 public class Hand {
 
+	private static final int POKER_HAND_SIZE = 5;
 	private int n;
 	private ArrayList<Card> cards;
 	
@@ -47,7 +48,7 @@ public class Hand {
 	
 	public void setRandomPokerHand(){
 		
-		for(int i=0;i<5;i++) {
+		for(int i=0; i < POKER_HAND_SIZE; i++) {
 			Card c = new Card();
 			c.setRandom();
 			cards.add(c);
