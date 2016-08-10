@@ -3,6 +3,10 @@ import java.util.ArrayList;
 public class Tester {
 
 	public static void main(String[] args) {
+		
+		p("Creating and Checking the kind of Hand formed :\n");
+		p("------------------------------------------------\n");
+		
 		Hand hand = new Hand();
 		
 		//Checking Straight Flush
@@ -58,8 +62,8 @@ public class Tester {
 		cards.clear();
 		//Checking Straight
 		cards.add(new Card(Suits.HEARTS, Denom.TWO));
-		cards.add(new Card(Suits.HEARTS, Denom.THREE));
-		cards.add(new Card(Suits.HEARTS, Denom.FOUR));
+		cards.add(new Card(Suits.CLUBS, Denom.THREE));
+		cards.add(new Card(Suits.SPADES, Denom.FOUR));
 		cards.add(new Card(Suits.HEARTS, Denom.FIVE));
 		cards.add(new Card(Suits.HEARTS, Denom.SIX));
 		hand.setCards(cards);
@@ -96,7 +100,7 @@ public class Tester {
 		p(hand.evaluatePoker().toString()+"\n");
 		
 		cards.clear();
-		//Checking Full House
+		//Checking High Hand
 		cards.add(new Card(Suits.CLUBS, Denom.ACE));
 		cards.add(new Card(Suits.HEARTS, Denom.KING));
 		cards.add(new Card(Suits.SPADES, Denom.EIGHT));
@@ -112,4 +116,3 @@ public class Tester {
 	}
 	
 }
-
